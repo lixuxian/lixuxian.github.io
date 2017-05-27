@@ -3,14 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>Ryu+Mininet安装使用向导 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Ryu的安装及使用安装：在终端中输入如下命令：    $ wget https://raw.githubusercontent.com/sdnds-tw/ryuInstallHelper/master/ryuInstallHelper.sh    $ bash ryuInstallHelper.sh 使用：`$ ryu-manager yourapp.py` 若无yourapp.py则默认启动一个">
+<meta name="keywords" content="Ryu,Mininet,SDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ryu+Mininet安装使用向导">
+<meta property="og:url" content="http://yoursite.com/2017/05/27/Ryu+Mininet Install/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Ryu的安装及使用安装：在终端中输入如下命令：    $ wget https://raw.githubusercontent.com/sdnds-tw/ryuInstallHelper/master/ryuInstallHelper.sh    $ bash ryuInstallHelper.sh 使用：`$ ryu-manager yourapp.py` 若无yourapp.py则默认启动一个">
+<meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/setup.png">
+<meta property="og:image" content="http://oqlfpx0q4.bkt.clouddn.com/mininet_setup.jpg">
+<meta property="og:updated_time" content="2017-05-27T06:21:46.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Ryu+Mininet安装使用向导">
+<meta name="twitter:description" content="Ryu的安装及使用安装：在终端中输入如下命令：    $ wget https://raw.githubusercontent.com/sdnds-tw/ryuInstallHelper/master/ryuInstallHelper.sh    $ bash ryuInstallHelper.sh 使用：`$ ryu-manager yourapp.py` 若无yourapp.py则默认启动一个">
+<meta name="twitter:image" content="https://oqlfpx0q4.bkt.clouddn.com/setup.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,161 +67,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-树莓派-tca9548-mpu9250" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/27/树莓派-tca9548-mpu9250/" class="article-date">
-  <time datetime="2017-05-27T06:39:24.000Z" itemprop="datePublished">2017-05-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/树莓派/">树莓派</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/树莓派-tca9548-mpu9250/">树莓派+tca9548+mpu9250</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect5.JPG" alt="TCA9548连线图"></p>
-<h2 id="TCA9548介绍"><a href="#TCA9548介绍" class="headerlink" title="TCA9548介绍"></a>TCA9548介绍</h2><p>i2c多路复用芯片，一个TCA9548最多可以挂8个MPU9250</p>
-<h2 id="MPU9250介绍"><a href="#MPU9250介绍" class="headerlink" title="MPU9250介绍"></a>MPU9250介绍</h2><p>九轴传感器：加速度+陀螺仪+磁力计</p>
-<h2 id="树莓派使用i2ctools及芯片读写"><a href="#树莓派使用i2ctools及芯片读写" class="headerlink" title="树莓派使用i2ctools及芯片读写"></a>树莓派使用i2ctools及芯片读写</h2><p>树莓派通过i2c访问参照<a href="https://toutiao.io/posts/r8q8cg/preview" target="_blank" rel="external">https://toutiao.io/posts/r8q8cg/preview</a><br>查看i2c设备：<br>    <code>$ i2cdetect -l</code><br>查看特定设备：<br>    <code>$ i2cdetect -y 1</code><br>结果如图所示：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect.JPG" alt="i2cdetect"></p>
-<p>其中0x70显示“UU”表示这个地址上有一个i2c设备，但是已被占用。<br>如要使用该设备，则需卸载使用该设备的模块，如：<br>    <code>$ rmmod i2c_mux_pca954x</code><br>此时，在此查看设备的结果如图，“UU”已变为“70”，这是tca9548的地址：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect2.JPG" alt="卸载模块"></p>
-<p>将mpu9250连接到tca9548的SD0/SC0后，向tca9548的控制器写入0x01(表示选择了通道0)，<br>可以看到i2c总线上已挂载该设备，地址为0x68，如图：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect3.JPG" alt="成功挂载mpu9250"></p>
-<p>运行mpu9250的测试程序，已可读取其九轴的数据，如图：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect4.JPG" alt="九轴数据"></p>
-<h2 id="TCA9548芯片读写"><a href="#TCA9548芯片读写" class="headerlink" title="TCA9548芯片读写"></a>TCA9548芯片读写</h2><pre><code>import smbus
-import time
-
-i2c = smbus.SMBus(1)
-
-# init
-try:
-    i2c.write_byte(0x70,0x01)
-    print &quot;write mux register&quot;
-    time.sleep(0.1)
-    channel = i2c.read_byte(0x70)
-    print &quot;channel:&quot; + bin(channel)
-except:
-    print &quot;read failed&quot;
-</code></pre><h2 id="MPU9250传感器读写"><a href="#MPU9250传感器读写" class="headerlink" title="MPU9250传感器读写"></a>MPU9250传感器读写</h2><pre><code>import smbus
-import sched, time
-from struct import *
-import ctypes
-from math import acos
-
-
-i2c = smbus.SMBus(1)
-addr = 0x68
-t0 = time.time()
-
-# init zone
-try:
-    device_id = i2c.read_byte_data(addr, 0x75)
-    print &quot;Device ID:&quot; + str(hex(device_id)) + &quot; MPU9250 I2C Connected&quot;
-except:
-    print &quot;Connected failed&quot;
-
-i2c.write_byte_data(0x68, 0x6a, 0x00)
-time.sleep(0.05)
-i2c.write_byte_data(0x68, 0x37, 0x02)
-i2c.write_byte_data(0x0c, 0x0a, 0x16)
-
-# set frequence for accelerator
-i2c.write_byte_data(0x68, 29, 9)
-# enable fifo and dmp
-# i2c.write_byte_data(0x68, 106, 32+64)
-# init done
-
-def mpu9250_data_get_and_write():
-    # keep AKM pointer on continue measuring
-    i2c.write_byte_data(0x0c, 0x0a, 0x16)
-    # get MPU9250 smbus block data
-    # xyz_g_offset = i2c.read_i2c_block_data(addr, 0x13, 6)
-    xyz_a_out = i2c.read_i2c_block_data(addr, 0x3B, 6)
-    print &quot;xyz_a_out&quot; + str(list2word(xyz_a_out, calc_accelerator_value))
-    # print &quot;xyz_a_out_org&quot; + str(xyz_a_out)
-    xyz_g_out = i2c.read_i2c_block_data(addr, 0x43, 6)
-    print &quot;xyz_g_out&quot; + str(list2word(xyz_g_out, calc_gyro_value))
-
-    xyz_mag = i2c.read_i2c_block_data(0x0c, 0x03, 6)
-    print &quot;xyz_mag&quot; + str(list2word(xyz_mag))
-
-    xyz_mag_adj = i2c.read_i2c_block_data(0x0c, 0x10, 3)
-
-def list2word(data_list=[], callback=&apos;&apos;):
-    data = data_list[:]
-    if not len(data):
-        return
-    result = []
-    # x, y, z: two bytes per data
-    for i in range(3):
-        high_byte = data.pop(0)
-        low_byte = data.pop(0)
-        result.append((float(ctypes.c_int16(((high_byte&lt;&lt;8) | low_byte)).value)))
-    return result
-
-
-def calc_accelerator_value(value):
-    return round(value/16.4)
-
-
-def calc_gyro_value(value):
-    return round(value/131)
-
-
-def clear_i2c_and_close_file():
-    i2c.write_byte_data(addr, 0x6A, 0x07)
-
-
-# solution 1:while true
-def while_true_method():
-    max_count = 100;
-    if max_count &lt; 1:
-        max_count = 100
-    print &quot;data counts:&quot; + str(max_count)
-
-    max_count = int(max_count)
-    count = 1
-    print &quot;&quot;
-    print &quot;MPU9250 axis DATA Recording...&quot;
-    while True:
-        mpu9250_data_get_and_write()
-        count += 1
-        time.sleep(0.5)
-
-
-if __name__ == &apos;__main__&apos;:
-    while_true_method()
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/27/树莓派-tca9548-mpu9250/" data-id="cj36xdtqk00011shqvngmtzkg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mpu9250/">mpu9250</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tca9548/">tca9548</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Ryu+Mininet Install" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Ryu+Mininet Install" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/27/Ryu+Mininet Install/" class="article-date">
   <time datetime="2017-05-27T02:53:43.000Z" itemprop="datePublished">2017-05-27</time>
@@ -230,8 +84,8 @@ if __name__ == &apos;__main__&apos;:
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/27/Ryu+Mininet Install/">Ryu+Mininet安装使用向导</a>
+    <h1 class="article-title" itemprop="name">
+      Ryu+Mininet安装使用向导
     </h1>
   
 
@@ -271,10 +125,23 @@ py/sh            执行 python 表达式或运行外部 shell 程序
     </footer>
   </div>
   
-</article>
-
+    
+<nav id="article-nav">
+  
+    <a href="/2017/05/27/树莓派-tca9548-mpu9250/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          树莓派+tca9548+mpu9250
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 </section>
         
