@@ -12,16 +12,15 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/27/树莓派-tca9548-mpu9250/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="TCA9548介绍i2c多路复用芯片，一个TCA9548最多可以挂8个MPU9250 MPU9250介绍九轴传感器：加速度+陀螺仪+磁力计 树莓派使用i2ctools及芯片读写树莓派通过i2c访问参照https://toutiao.io/posts/r8q8cg/preview查看i2c设备：    $ i2cdetect -l查看特定设备：    $ i2cdetect -y 1结果如图所示：">
-<meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect5.JPG">
 <meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect.JPG">
 <meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect2.JPG">
 <meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect3.JPG">
 <meta property="og:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect4.JPG">
-<meta property="og:updated_time" content="2017-05-27T07:09:26.888Z">
+<meta property="og:updated_time" content="2017-06-02T12:26:50.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派+tca9548+mpu9250">
 <meta name="twitter:description" content="TCA9548介绍i2c多路复用芯片，一个TCA9548最多可以挂8个MPU9250 MPU9250介绍九轴传感器：加速度+陀螺仪+磁力计 树莓派使用i2ctools及芯片读写树莓派通过i2c访问参照https://toutiao.io/posts/r8q8cg/preview查看i2c设备：    $ i2cdetect -l查看特定设备：    $ i2cdetect -y 1结果如图所示：">
-<meta name="twitter:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect5.JPG">
+<meta name="twitter:image" content="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect.JPG">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -96,8 +95,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect5.JPG" alt="TCA9548连线图"></p>
-<h2 id="TCA9548介绍"><a href="#TCA9548介绍" class="headerlink" title="TCA9548介绍"></a>TCA9548介绍</h2><p>i2c多路复用芯片，一个TCA9548最多可以挂8个MPU9250</p>
+        <h2 id="TCA9548介绍"><a href="#TCA9548介绍" class="headerlink" title="TCA9548介绍"></a>TCA9548介绍</h2><p>i2c多路复用芯片，一个TCA9548最多可以挂8个MPU9250</p>
 <h2 id="MPU9250介绍"><a href="#MPU9250介绍" class="headerlink" title="MPU9250介绍"></a>MPU9250介绍</h2><p>九轴传感器：加速度+陀螺仪+磁力计</p>
 <h2 id="树莓派使用i2ctools及芯片读写"><a href="#树莓派使用i2ctools及芯片读写" class="headerlink" title="树莓派使用i2ctools及芯片读写"></a>树莓派使用i2ctools及芯片读写</h2><p>树莓派通过i2c访问参照<a href="https://toutiao.io/posts/r8q8cg/preview" target="_blank" rel="external">https://toutiao.io/posts/r8q8cg/preview</a><br>查看i2c设备：<br>    <code>$ i2cdetect -l</code><br>查看特定设备：<br>    <code>$ i2cdetect -y 1</code><br>结果如图所示：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect.JPG" alt="i2cdetect"></p>
 <p>其中0x70显示“UU”表示这个地址上有一个i2c设备，但是已被占用。<br>如要使用该设备，则需卸载使用该设备的模块，如：<br>    <code>$ rmmod i2c_mux_pca954x</code><br>此时，在此查看设备的结果如图，“UU”已变为“70”，这是tca9548的地址：<br><img src="https://oqlfpx0q4.bkt.clouddn.com/i2cdetect2.JPG" alt="卸载模块"></p>
@@ -210,7 +208,7 @@ if __name__ == &apos;__main__&apos;:
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/27/树莓派-tca9548-mpu9250/" data-id="cj36xdtqk00011shqvngmtzkg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/27/树莓派-tca9548-mpu9250/" data-id="cj3ftyo8l0000zwhqtiiozuob" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mpu9250/">mpu9250</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tca9548/">tca9548</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
@@ -220,6 +218,15 @@ if __name__ == &apos;__main__&apos;:
   
     
 <nav id="article-nav">
+  
+    <a href="/2017/06/02/Mininet动态拓扑实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Mininet动态拓扑实现
+        
+      </div>
+    </a>
   
   
     <a href="/2017/05/27/Ryu+Mininet Install/" id="article-nav-older" class="article-nav-link-wrap">
@@ -250,7 +257,7 @@ if __name__ == &apos;__main__&apos;:
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mininet/">Mininet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ryu/">Ryu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDN/">SDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mpu9250/">mpu9250</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tca9548/">tca9548</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mininet/">Mininet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ryu/">Ryu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SDN/">SDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mpu9250/">mpu9250</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tca9548/">tca9548</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态拓扑/">动态拓扑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/树莓派/">树莓派</a></li></ul>
     </div>
   </div>
 
@@ -260,7 +267,7 @@ if __name__ == &apos;__main__&apos;:
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Mininet/" style="font-size: 10px;">Mininet</a> <a href="/tags/Ryu/" style="font-size: 10px;">Ryu</a> <a href="/tags/SDN/" style="font-size: 10px;">SDN</a> <a href="/tags/mpu9250/" style="font-size: 10px;">mpu9250</a> <a href="/tags/tca9548/" style="font-size: 10px;">tca9548</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a>
+      <a href="/tags/Mininet/" style="font-size: 20px;">Mininet</a> <a href="/tags/Ryu/" style="font-size: 10px;">Ryu</a> <a href="/tags/SDN/" style="font-size: 10px;">SDN</a> <a href="/tags/mpu9250/" style="font-size: 10px;">mpu9250</a> <a href="/tags/tca9548/" style="font-size: 10px;">tca9548</a> <a href="/tags/动态拓扑/" style="font-size: 10px;">动态拓扑</a> <a href="/tags/树莓派/" style="font-size: 10px;">树莓派</a>
     </div>
   </div>
 
@@ -269,7 +276,7 @@ if __name__ == &apos;__main__&apos;:
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li></ul>
     </div>
   </div>
 
@@ -280,6 +287,10 @@ if __name__ == &apos;__main__&apos;:
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/06/02/Mininet动态拓扑实现/">Mininet动态拓扑实现</a>
+          </li>
         
           <li>
             <a href="/2017/05/27/树莓派-tca9548-mpu9250/">树莓派+tca9548+mpu9250</a>
